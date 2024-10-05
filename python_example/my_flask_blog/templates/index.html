@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flask Blog Example</title>
+  </head>
+  <body>
+    <h1>Flask Blog Example</h1>
+    <form action="/add" method="post">
+      <label for="title">
+        Title <br />
+        <input type="text" placeholder="Title" name="title" id="title" />
+      </label>
+      <br />
+      <label for="content">
+        Content <br />
+        <textarea
+          name="content"
+          id="content"
+          placeholder="Content"
+          cols="30"
+          rows="10"></textarea>
+      </label>
+      <br />
+      <button type="submit">Add</button>
+    </form>
+    <hr />
+    <!-- View dissplay content of block-->
+    <table border="1">
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+      </tr>
+      <!-- step 4 call model from view -->
+      {% for post in posts %}
+      <tr>
+        <td>{{ post["title"] }}</td>
+        <td>{{ post["content"] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

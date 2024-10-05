@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/edit_task.css' %}" />
+    <title>Chỉnh sửa công việc</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Chỉnh sửa công việc</h1>
+      <form method="POST" action="{% url 'edit_task' task_id %}">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="add-button">Cập nhật công việc</button>
+        <a href="{% url 'task_list' %}" class="back-button"
+          >Quay lại danh sách công việc</a
+        >
+      </form>
+    </div>
+    {% if not task_id %}
+    <p>Error: Task ID is missing!</p>
+    <!-- Thông báo nếu task.id bị rỗng -->
+    {% endif %}
+  </body>
+</html>

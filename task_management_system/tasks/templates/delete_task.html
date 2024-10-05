@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác nhận xóa công việc</title>
+</head>
+<body>
+    <h1>Xác nhận xóa công việc</h1>
+    <p>Bạn có chắc muốn xóa công việc này không?</p>
+    <form method="POST" action="{% url 'delete_task' task.id %}">
+        {% csrf_token %}
+        <button type="submit">Xóa công việc</button>
+    </form>
+    <a href="{% url 'task_list' %}">Quay lại danh sách công việc</a>
+</body>
+</html>

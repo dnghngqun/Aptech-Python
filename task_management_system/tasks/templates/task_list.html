@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh sách công việc</title>
+    <link rel="stylesheet" href="{% static 'css/task_list.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1 class="title">Danh sách công việc</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Tên công việc</th>
+          <th>Mô tả</th>
+          <th>Độ ưu tiên</th>
+          <th>Hạn chót</th>
+          <th>Thời gian còn lại</th>
+          <th>Đã hoàn thành</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr>
+          <td>{{ task.name }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.priority }}</td>
+          <td>{{ task.deadline }}</td>
+          <td>
+            {% if task.is_expired %}
+                Đã hết hạn
+            {% else %}
+                {{ task.remaining_months }} tháng, {{ task.remaining_days }} ngày, {{ task.remaining_hours }} giờ, {{ task.remaining_minutes }} phút
+            {% endif %}
+        </td>
+        
+
+
+          <td>
+            <input
+              type="checkbox"
+              class="completed-checkbox"
+              data-task-id="{{ task.id }}"
+              {% if task.completed %}checked {% endif %} />
+          </td>
+          <td class="action-buttons">
+            <a href="{% url 'edit_task' task.id %}">Chỉnh sửa</a>
+            <a href="{% url 'delete_task' task.id %}" class="delete">Xóa</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <br />
+    <a href="{% url 'logout_user' %}" class="btn-logout">Đăng xuất</a>
+    <a href="{% url 'add_task' %}" class="btn-add">Thêm công việc mới</a>
+
+    <script>
+      $(document).ready(function () {
+        // Khi checkbox được thay đổi
+        $(".completed-checkbox").on("change", function () {
+          var taskId = $(this).data("task-id");
+          var isChecked = $(this).is(":checked");
+
+          // Gửi yêu cầu AJAX để cập nhật trạng thái hoàn thành
+          $.ajax({
+            url: "{% url 'update_task_completion' %}",
+            method: "POST",
+            data: {
+              task_id: taskId,
+              completed: isChecked,
+              csrfmiddlewaretoken: "{{ csrf_token }}",
+            },
+            success: function (response) {
+              alert("Cập nhật thành công!");
+            },
+            error: function (xhr, status, error) {
+              alert("Đã có lỗi xảy ra!");
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

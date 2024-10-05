@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/add_task.css' %}" />
+    <title>Thêm công việc mới</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Thêm công việc mới</h1>
+      <form method="POST" action="{% url 'add_task' %}">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="add-button">Thêm công việc</button>
+        <a href="{% url 'task_list' %}" class="back-button">Quay lại danh sách công việc</a>
+      </form>
+    </div>
+  </body>
+</html>

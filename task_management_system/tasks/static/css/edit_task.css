@@ -1,0 +1,52 @@
+body {
+  background-color: #f0f0ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+h1.title {
+  text-align: center;
+  width: 30%;
+}
+
+.container {
+  max-width: 1200px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+}
+
+.container form {
+  width: 60%;
+  padding: 20px;
+}
+
+select {
+  margin-right: 10px;
+}
+#id_description {
+  width: 201px;
+  height: 60px;
+}
+
+.add-button {
+  background-color: #f0f0ec;
+  outline: none;
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.back-button {
+  background-color: #a5a59e;
+  padding: 2.5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+}
