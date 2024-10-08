@@ -46,8 +46,8 @@
               data-task-id="{{ task.id }}"
               {% if task.completed %}checked {% endif %} />
           </td>
-          <td class="action-buttons">
-            <a href="{% url 'edit_task' task.id %}">Chỉnh sửa</a>
+          <td class="action-buttons" style="width: 15%;">
+            <a href="{% url 'edit_task' task.id %}" {% if task.completed %}style="pointer-events: none; opacity: 0.7;"{% endif %}>Chỉnh sửa</a>
             <a href="{% url 'delete_task' task.id %}" class="delete">Xóa</a>
           </td>
         </tr>
@@ -75,8 +75,10 @@
               completed: isChecked,
               csrfmiddlewaretoken: "{{ csrf_token }}",
             },
+
             success: function (response) {
               alert("Cập nhật thành công!");
+              location.reload();
             },
             error: function (xhr, status, error) {
               alert("Đã có lỗi xảy ra!");

@@ -60,3 +60,6 @@ h1.title {
   text-decoration: none;
   border-radius: 5px;
 }
+.action-buttons {
+  width: 15%;
+}

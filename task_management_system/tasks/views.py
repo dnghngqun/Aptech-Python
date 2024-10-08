@@ -13,7 +13,7 @@ def task_list(request):
     user_id = request.session.get('user_id')
     
     if not user_id:
-        return redirect('login_user')  # Nếu chưa đăng nhập, chuyển hướng về login
+        return redirect('login_user') 
     
     # Truy vấn danh sách công việc từ Firestore
     tasks_ref = db.collection('users').document(user_id).collection('tasks')
@@ -64,8 +64,6 @@ def task_list(request):
             task['remaining_minutes'] = 0
 
             
-            
-    
     return render(request, 'task_list.html', {'tasks': task_list})
 
 @csrf_exempt
