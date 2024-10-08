@@ -57,8 +57,7 @@ SECRET_KEY = 'django-insecure-708ar-7!!p*l_i353v546cd*o^=yf16z6h(*qdih=^jzl_%nmr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['aptech-python.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
