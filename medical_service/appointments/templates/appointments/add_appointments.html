@@ -1,0 +1,29 @@
+<!-- appointments/templates/appointments/add_appointments.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Appointments</title>
+</head>
+<body>
+    <h1>Add Appointments</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="patient_id">Patient ID:</label>
+        <input type="number" name="patient_id" required><br>
+
+        <label for="doctor_id">Doctor ID:</label>
+        <input type="number" name="doctor_id" required><br>
+
+        <label for="appointment_date">Appointment Date:</label>
+        <input type="datetime-local" name="appointment_date" required><br>
+
+        <label for="reason">Reason:</label>
+        <input type="text" name="reason"><br>
+
+        <button type="submit">Add Appointment</button>
+    </form>
+</body>
+</html>

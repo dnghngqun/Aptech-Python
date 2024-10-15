@@ -1,9 +1,12 @@
+# appointments/urls.py
+
 from django.urls import path
-from .views import add_patients_and_doctors, add_appointments, generate_report, get_today_appointments
+from .views import add_patients, add_doctors, add_appointments, report, today_appointments
 
 urlpatterns = [
-    path('add/', add_patients_and_doctors, name='add_patients_and_doctors'),
-    path('appointments/add/', add_appointments, name='add_appointments'),
-    path('report/', generate_report, name='generate_report'),
-    path('appointments/today/', get_today_appointments, name='get_today_appointments'),
+    path('add_patients/', add_patients, name='add_patients'),
+    path('add_doctors/', add_doctors, name='add_doctors'),
+    path('add_appointments/', add_appointments, name='add_appointments'),
+    path('report/', report, name='report'),
+    path('today_appointments/', today_appointments, name='today_appointments'),  # Sử dụng today_appointments
 ]

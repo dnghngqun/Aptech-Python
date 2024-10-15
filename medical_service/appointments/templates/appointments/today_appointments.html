@@ -1,0 +1,35 @@
+<!-- appointments/templates/appointments/today_appointments.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today Appointments</title>
+</head>
+<body>
+    <h1>Các cuộc hẹn hôm nay</h1>
+    <table border="1">
+        <tr>
+            <th>No</th>
+            <th>Patient Name</th>
+            <th>Birthday</th>
+            <th>Gender</th>
+            <th>Doctor Name</th>
+            <th>Status</th>
+            <th>Note</th>
+        </tr>
+        {% for appointment in today_appointments %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ appointment.patient.full_name }}</td>
+            <td>{{ appointment.patient.date_of_birth }}</td>
+            <td>{{ appointment.patient.gender }}</td>
+            <td>{{ appointment.doctor.full_name }}</td>
+            <td>{{ appointment.status }}</td>
+            <td>{{ appointment.reason }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

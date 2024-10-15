@@ -1,0 +1,38 @@
+<!-- appointments/templates/appointments/add_patients.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patients</title>
+</head>
+<body>
+    <h1>Add Patients</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="full_name">Full Name:</label>
+        <input type="text" name="full_name" required><br>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" name="date_of_birth" required><br>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <label for="address">Address:</label>
+        <input type="text" name="address"><br>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email"><br>
+
+        <button type="submit">Add Patient</button>
+    </form>
+</body>
+</html>
